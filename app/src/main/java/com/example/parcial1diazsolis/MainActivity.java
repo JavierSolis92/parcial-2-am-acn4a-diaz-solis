@@ -1,5 +1,6 @@
 package com.example.parcial1diazsolis;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +19,9 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +39,35 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        TextView tvCuenta = findViewById(R.id.tvCuenta);
+
+        tvCuenta.setOnClickListener(v -> {
+            PopupMenu popup = new PopupMenu(MainActivity.this, v);
+
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            String userEmail = (currentUser != null && currentUser.getEmail() != null)
+                    ? currentUser.getEmail()
+                    : "Usuario conectado";
+
+            popup.getMenu().add(userEmail);
+            popup.getMenu().add("Cerrar Sesión");
+
+            popup.setOnMenuItemClickListener(item -> {
+                if (item.getTitle().equals("Cerrar Sesión")) {
+                    FirebaseAuth.getInstance().signOut();
+
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                return false;
+            });
+
+            popup.show();
         });
 
         // mapeo de vistas
