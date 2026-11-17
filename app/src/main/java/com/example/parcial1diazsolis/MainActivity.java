@@ -71,22 +71,23 @@ public class MainActivity extends AppCompatActivity {
         btnDia3 = findViewById(R.id.btnDia3);
 
 
+        // Eventos reales usando Intents y Extras
         btnDia1.setOnClickListener(v -> abrirDetalle(
                 "Pecho, Hombro y Tríceps",
-                "1. Press de Banca Plano\n2. Press Inclinado\n3. Press Francés con Barra W\n4. Elevaciones Laterales",
-                "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop"
+                "• Machine Press (1 serie x 100kg)\n• Aperturas en Pec Deck (1 serie al fallo)\n• Elevaciones Laterales (1 serie pesada)\n• Press Francés (1 serie al fallo)",
+                "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1000&auto=format&fit=crop"
         ));
 
         btnDia2.setOnClickListener(v -> abrirDetalle(
                 "Día de Piernas",
-                "1. Sentadilla Pesada\n2. Prensa 45°\n3. Curl Femoral\n4. Elevación de Talones",
-                "https://images.unsplash.com/photo-1434682881908-b43d0467b798?q=80&w=800&auto=format&fit=crop"
+                "• Prensa 45° (1 serie x 270kg)\n• Hack Squat (1 serie x 160kg)\n• Peso Muerto Rumano / RDL (1 serie x 80kg)\n• Elevación de Talones (1 serie al fallo)",
+                "https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?q=80&w=1000&auto=format&fit=crop"
         ));
 
         btnDia3.setOnClickListener(v -> abrirDetalle(
                 "Espalda y Bíceps",
-                "1. Peso Muerto\n2. Dominadas (Agarre Supino)\n3. Remo en Máquina\n4. Curl de Bíceps",
-                "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=800&auto=format&fit=crop"
+                "• Dominadas Agarre Supino (1 serie al fallo)\n• Remo T-Bar (1 serie x 75kg)\n• Pullover en Polea Alta (1 serie pesada)\n• Curl de Bíceps con Barra W (1 serie al fallo)",
+                "https://images.unsplash.com/photo-1603287681836-b174ce5074c2?q=80&w=1000&auto=format&fit=crop"
         ));
     }
 

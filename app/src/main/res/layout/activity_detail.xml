@@ -6,7 +6,7 @@
     android:padding="24dp"
     android:gravity="center_horizontal">
 
-    <!-- Título de la rutina que llegará por Intent -->
+    <!-- Título de la rutina -->
     <TextView
         android:id="@+id/tvTituloRutina"
         android:layout_width="wrap_content"
@@ -18,7 +18,7 @@
         android:layout_marginBottom="16dp"
         android:textAlignment="center"/>
 
-    <!-- Imagen que se descargará por URL con Picasso -->
+    <!-- Imagen web -->
     <ImageView
         android:id="@+id/imgRutinaWeb"
         android:layout_width="match_parent"
@@ -27,18 +27,23 @@
         android:layout_marginBottom="24dp"
         android:background="#E0E0E0" />
 
-    <!-- Lista de ejercicios que llegará por Intent -->
-    <TextView
-        android:id="@+id/tvEjerciciosRutina"
+    <!-- ScrollView agregado para que la lista baje sin ocultar el cronómetro -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="Detalles..."
-        android:textSize="18sp"
-        android:textColor="#333333"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp">
 
-    <!-- Temporizador de descanso -->
+        <TextView
+            android:id="@+id/tvEjerciciosRutina"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detalles..."
+            android:textSize="18sp"
+            android:textColor="#333333" />
+    </ScrollView>
+
+    <!-- Temporizador -->
     <TextView
         android:id="@+id/tvTemporizador"
         android:layout_width="wrap_content"
