@@ -70,9 +70,33 @@ public class MainActivity extends AppCompatActivity {
         btnDia2 = findViewById(R.id.btnDia2);
         btnDia3 = findViewById(R.id.btnDia3);
 
-        // Eventos temporales para pruebas (reemplazar con lógica real)
-        btnDia1.setOnClickListener(v -> Toast.makeText(this, "Cargando rutina de Pecho...", Toast.LENGTH_SHORT).show());
-        btnDia2.setOnClickListener(v -> Toast.makeText(this, "Cargando rutina de Piernas...", Toast.LENGTH_SHORT).show());
-        btnDia3.setOnClickListener(v -> Toast.makeText(this, "Cargando rutina de Espalda...", Toast.LENGTH_SHORT).show());
+
+        btnDia1.setOnClickListener(v -> abrirDetalle(
+                "Pecho, Hombro y Tríceps",
+                "1. Press de Banca Plano\n2. Press Inclinado\n3. Press Francés con Barra W\n4. Elevaciones Laterales",
+                "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop"
+        ));
+
+        btnDia2.setOnClickListener(v -> abrirDetalle(
+                "Día de Piernas",
+                "1. Sentadilla Pesada\n2. Prensa 45°\n3. Curl Femoral\n4. Elevación de Talones",
+                "https://images.unsplash.com/photo-1434682881908-b43d0467b798?q=80&w=800&auto=format&fit=crop"
+        ));
+
+        btnDia3.setOnClickListener(v -> abrirDetalle(
+                "Espalda y Bíceps",
+                "1. Peso Muerto\n2. Dominadas (Agarre Supino)\n3. Remo en Máquina\n4. Curl de Bíceps",
+                "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=800&auto=format&fit=crop"
+        ));
     }
+
+    // Método auxiliar para armar el Intent y empaquetar los Extras
+    private void abrirDetalle(String titulo, String ejercicios, String urlImagen) {
+        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+        intent.putExtra("TITULO", titulo);
+        intent.putExtra("EJERCICIOS", ejercicios);
+        intent.putExtra("URL_IMAGEN", urlImagen);
+        startActivity(intent);
+    }
+
 }
